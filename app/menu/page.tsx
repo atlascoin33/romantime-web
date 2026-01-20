@@ -1,227 +1,168 @@
 // app/menu/page.tsx
-type MenuItem = {
-  name: string;
-  description?: string;
-  price: string;
-};
+import TabsMenu, {
+  MenuItem,
+  TabConfig,
+} from "../components/TabsMenu";
 
-type MenuSection = {
-  title: string;
-  items: MenuItem[];
-};
+const bebidas: MenuItem[] = [
+  // --- Cervezas ---
+  { name: "Caña pequeña", description: "Small caña", price: "1,80 €", section: "Cervezas" },
+  { name: "Caña mediana", description: "Medium caña", price: "2,00 €", section: "Cervezas" },
+  { name: "Caña 1906 pequeña", description: "Small caña 1906", price: "2,10 €", section: "Cervezas" },
+  { name: "Caña 1906 mediana", description: "Medium caña 1906", price: "2,30 €", section: "Cervezas" },
+  { name: "Jarra", description: "Large beer", price: "3,40 €", section: "Cervezas" },
+  { name: "Estrella Galicia", description: "Estrella Galicia beer", price: "2,30 €", section: "Cervezas" },
+  { name: "Cerveza 0.0", description: "Low alcohol beer", price: "2,50 €", section: "Cervezas" },
+  {
+    name: "Cerveza botellín",
+    description: "Florete, Alhambra verde, Heineken, Rosa Blanca",
+    price: "2,80 €",
+    section: "Cervezas",
+  },
+  { name: "Coronita", description: "Coronita beer", price: "2,90 €", section: "Cervezas" },
 
-const sections: MenuSection[] = [
+  // --- Bebidas ---
+  { name: "Cola normal", description: "Coke", price: "2,30 €", section: "Bebidas" },
+  { name: "Cola zero", description: "Coke zero", price: "2,30 €", section: "Bebidas" },
+  { name: "Cola zero zero", description: "Coke zero zero", price: "2,30 €", section: "Bebidas" },
+  { name: "Fanta naranja", description: "Fanta orange", price: "2,30 €", section: "Bebidas" },
+  { name: "Fanta limón", description: "Fanta lemon", price: "2,30 €", section: "Bebidas" },
+  { name: "Nestea", description: "Nestea", price: "2,30 €", section: "Bebidas" },
+  { name: "Sprite", description: "Sprite", price: "2,30 €", section: "Bebidas" },
+  { name: "Aquarium naranja", description: "Aquarium orange", price: "2,40 €", section: "Bebidas" },
+  { name: "Aquarium limón", description: "Aquarium lemon", price: "2,40 €", section: "Bebidas" },
+  { name: "Tónica", description: "Tonic", price: "2,20 €", section: "Bebidas" },
+  { name: "Laccao", description: "Laccao", price: "2,20 €", section: "Bebidas" },
+  { name: "Bitter Kas", description: "Bitter Kas", price: "2,50 €", section: "Bebidas" },
+  { name: "Red Bull", description: "Red Bull", price: "2,90 €", section: "Bebidas" },
+  { name: "Zumo natural", description: "Natural juice", price: "2,50 €", section: "Bebidas" },
   {
-    title: "Cervezas",
-    items: [
-      { name: "Caña pequeña", description: "Small caña", price: "1,80 €" },
-      { name: "Caña mediana", description: "Medium caña", price: "2,00 €" },
-      {
-        name: "Caña 1906 pequeña",
-        description: "Small caña 1906",
-        price: "2,10 €",
-      },
-      {
-        name: "Caña 1906 mediana",
-        description: "Medium caña 1906",
-        price: "2,30 €",
-      },
-      { name: "Jarra", description: "Large beer", price: "3,40 €" },
-      {
-        name: "Estrella Galicia",
-        description: "Estrella Galicia beer",
-        price: "2,30 €",
-      },
-      {
-        name: "Cerveza 0.0",
-        description: "Low alcohol beer",
-        price: "2,50 €",
-      },
-      {
-        name: "Cerveza botellín",
-        description: "Florete, Alhambra verde, Heineken, Rosa Blanca",
-        price: "2,80 €",
-      },
-      { name: "Coronita", description: "Coronita beer", price: "2,90 €" },
-    ],
+    name: "Zumo botellín",
+    description: "Piña / melocotón / naranja",
+    price: "2,20 €",
+    section: "Bebidas",
+  },
+  { name: "Agua", description: "Water", price: "2,00 €", section: "Bebidas" },
+  { name: "Agua con gas", description: "Sparkling water", price: "2,20 €", section: "Bebidas" },
+
+  // --- Café ---
+  { name: "Solo", description: "Espresso", price: "1,40 €", section: "Café" },
+  { name: "Cortado", description: "Cut coffee", price: "1,60 €", section: "Café" },
+  { name: "Con leche", description: "Coffee with milk", price: "1,70 €", section: "Café" },
+  {
+    name: "Con soja / avena",
+    description: "Coffee with soy / oats",
+    price: "1,80 €",
+    section: "Café",
+  },
+  { name: "Americano", description: "Americano", price: "1,70 €", section: "Café" },
+  { name: "Cappuccino", description: "Cappuccino", price: "2,20 €", section: "Café" },
+  { name: "Latte", description: "Latte", price: "2,20 €", section: "Café" },
+  { name: "Carajillo", description: "Carajillo", price: "2,35 €", section: "Café" },
+
+  // --- Infusiones ---
+  { name: "Té verde", description: "Green tea", price: "1,70 €", section: "Infusiones" },
+  { name: "Té rojo", description: "Red tea", price: "1,70 €", section: "Infusiones" },
+  { name: "Té negro", description: "Black tea", price: "1,70 €", section: "Infusiones" },
+  { name: "Poleo menta", description: "Mint", price: "1,70 €", section: "Infusiones" },
+  { name: "Manzanilla", description: "Chamomile", price: "1,70 €", section: "Infusiones" },
+  { name: "Frutas del bosque", description: "Forest fruit", price: "1,70 €", section: "Infusiones" },
+  { name: "Tila", description: "Linden tea", price: "1,70 €", section: "Infusiones" },
+  { name: "Té jazmín", description: "Jasmine tea", price: "1,90 €", section: "Infusiones" },
+
+  // --- Licores, vinos, etc. ---
+  // (Puedes seguir añadiendo aquí todos los que ya teníamos: licores de copa, vinos tintos, blancos, rosados, ron, whisky, coñac, vodka, desayunos, etc.)
+];
+
+const comidas: MenuItem[] = [
+  // --- Para picar ---
+  { name: "Judía de soja", description: "Edamame / soja", price: "2,95 €", section: "Para picar" },
+  { name: "Rollitos fritos", description: "Fried rolls", price: "4,50 €", section: "Para picar" },
+  { name: "Pan fritas", price: "3,95 €", section: "Para picar" },
+  { name: "Empanadillas fritas", description: "Fried dumplings (pork)", price: "4,50 €", section: "Para picar" },
+  { name: "Empanadillas al vapor", description: "Dumplings (chicken)", price: "4,70 €", section: "Para picar" },
+  { name: "Pollo frito", description: "Fried chicken", price: "3,50 €", section: "Para picar" },
+  { name: "Boniato frito", description: "Fried sweet potato", price: "4,50 €", section: "Para picar" },
+  { name: "Gamba frita", description: "Fried shrimp", price: "4,50 €", section: "Para picar" },
+  { name: "Pato frito", description: "Fried duck", price: "8,95 €", section: "Para picar" },
+  { name: "Pincho de pollo", description: "Chicken skewer", price: "4,20 €", section: "Para picar" },
+  { name: "Alitas fritas", description: "Fried wings", price: "4,50 €", section: "Para picar" },
+  { name: "Nuggets de pollo", description: "Chicken nuggets", price: "4,00 €", section: "Para picar" },
+  { name: "Pollo a la plancha", description: "Grilled chicken", price: "4,50 €", section: "Para picar" },
+  { name: "Lomo a la plancha", description: "Grilled pork", price: "4,20 €", section: "Para picar" },
+  { name: "Calamar a la romana", description: "Fried calamari", price: "6,50 €", section: "Para picar" },
+
+  // --- Platos ---
+  { name: "Arroz tres delicias", description: "Three fresh fried rice", price: "4,50 €", section: "Platos" },
+  { name: "Arroz con ternera", description: "Beef fried rice", price: "6,50 €", section: "Platos" },
+  { name: "Arroz con pollo", description: "Chicken fried rice", price: "5,50 €", section: "Platos" },
+  { name: "Arroz con gamba", description: "Shrimp fried rice", price: "6,50 €", section: "Platos" },
+  { name: "Tallarines con ternera", description: "Noodles with veal", price: "7,95 €", section: "Platos" },
+  { name: "Tallarines con pollo", description: "Noodles with chicken", price: "7,20 €", section: "Platos" },
+  { name: "Tallarines con gamba", description: "Noodles with shrimp", price: "7,95 €", section: "Platos" },
+  { name: "Fideos de ternera", description: "Noodles with veal", price: "6,95 €", section: "Platos" },
+  { name: "Fideos de pollo", description: "Noodles with chicken", price: "7,20 €", section: "Platos" },
+  { name: "Fideos de marisco", description: "Noodles with seafood", price: "7,95 €", section: "Platos" },
+  { name: "Lomo plancha con patatas", description: "Grilled pork with potatoes", price: "6,95 €", section: "Platos" },
+  { name: "Pollo frito con patatas", description: "Fried chicken with potatoes", price: "6,95 €", section: "Platos" },
+  { name: "Alitas fritas con patatas", description: "Fried wings with potatoes", price: "6,95 €", section: "Platos" },
+  { name: "Carne deshebrada con pimientos", description: "Shredded meat with peppers", price: "6,50 €", section: "Platos" },
+  { name: "Ternera salteada con salsa extra", description: "Veal sautéed with extra sauce", price: "7,95 €", section: "Platos" },
+  {
+    name: "Pollo crujiente con salsa agridulce",
+    description: "Crispy chicken with sweet and sour sauce",
+    price: "7,00 €",
+    section: "Platos",
   },
   {
-    title: "Bebidas",
-    items: [
-      { name: "Cola normal", description: "Coke", price: "2,30 €" },
-      { name: "Cola zero", description: "Coke zero", price: "2,30 €" },
-      { name: "Cola zero zero", description: "Coke zero zero", price: "2,30 €" },
-      { name: "Fanta naranja", description: "Fanta orange", price: "2,30 €" },
-      { name: "Fanta limón", description: "Fanta lemon", price: "2,30 €" },
-      { name: "Nestea", description: "Nestea", price: "2,30 €" },
-      { name: "Sprite", description: "Sprite", price: "2,30 €" },
-      { name: "Aquarium naranja", description: "Aquarium orange", price: "2,40 €" },
-      { name: "Aquarium limón", description: "Aquarium lemon", price: "2,40 €" },
-      { name: "Tónica", description: "Tonic", price: "2,20 €" },
-      { name: "Laccao", description: "Laccao", price: "2,20 €" },
-      { name: "Bitter Kas", description: "Bitter Kas", price: "2,50 €" },
-      { name: "Red Bull", description: "Red Bull", price: "2,90 €" },
-      { name: "Zumo natural", description: "Natural juice", price: "2,50 €" },
-      {
-        name: "Zumo botellín",
-        description: "Piña / melocotón / naranja",
-        price: "2,20 €",
-      },
-      { name: "Agua", description: "Water", price: "2,00 €" },
-      { name: "Agua con gas", description: "Sparkling water", price: "2,20 €" },
-      {
-        name: "Tinto de verano",
-        description: "Summer red wine",
-        price: "4,20 €",
-      },
-      { name: "Sangría 1L", description: "Sangria wine", price: "16,00 €" },
-    ],
+    name: "Pollo salteado con almendras",
+    description: "Fried chicken with almonds",
+    price: "7,00 €",
+    section: "Platos",
+  },
+  { name: "Chipirones fritos", description: "Fried baby squid", price: "10,00 €", section: "Platos" },
+
+  // --- Bocadillos ---
+  { name: "Jamón serrano", description: "Serrano ham", price: "4,50 €", section: "Bocadillos" },
+  { name: "Queso curado", description: "Cured cheese", price: "4,20 €", section: "Bocadillos" },
+  { name: "Sobrasada", description: "Sobrasada", price: "4,50 €", section: "Bocadillos" },
+  { name: "Chorizo", description: "Sausage", price: "4,20 €", section: "Bocadillos" },
+  { name: "Atún", description: "Tuna", price: "4,20 €", section: "Bocadillos" },
+  {
+    name: "Mixto jamón y queso",
+    description: "Mixed ham and cheese",
+    price: "5,50 €",
+    section: "Bocadillos",
   },
   {
-    title: "Café",
-    items: [
-      { name: "Solo", description: "Espresso", price: "1,40 €" },
-      { name: "Cortado", description: "Cut coffee", price: "1,60 €" },
-      { name: "Con leche", description: "Coffee with milk", price: "1,70 €" },
-      {
-        name: "Con soja / avena",
-        description: "Coffee with soy / oats",
-        price: "1,80 €",
-      },
-      { name: "Americano", description: "Americano", price: "1,70 €" },
-      { name: "Cappuccino", description: "Cappuccino", price: "2,20 €" },
-      { name: "Latte", description: "Latte", price: "2,20 €" },
-      { name: "Carajillo", description: "Carajillo", price: "2,35 €" },
-    ],
+    name: "Pepito de lomo",
+    description: "Lomo, bacon, cheese",
+    price: "5,50 €",
+    section: "Bocadillos",
   },
+  { name: "Pollo frito", description: "Fried chicken", price: "5,50 €", section: "Bocadillos" },
+  { name: "Tortilla de patatas", description: "Spanish omelette", price: "4,50 €", section: "Bocadillos" },
+
+  // --- Pa amb oli ---
+  { name: "Jamón serrano", description: "Serrano ham", price: "5,50 €", section: "Pa amb oli" },
   {
-    title: "Infusiones",
-    items: [
-      { name: "Té verde", description: "Green tea", price: "1,70 €" },
-      { name: "Té rojo", description: "Red tea", price: "1,70 €" },
-      { name: "Té negro", description: "Black tea", price: "1,70 €" },
-      { name: "Poleo menta", description: "Mint", price: "1,70 €" },
-      { name: "Manzanilla", description: "Chamomile", price: "1,70 €" },
-      { name: "Frutas del bosque", description: "Forest fruit", price: "1,70 €" },
-      { name: "Tila", description: "Linden tea", price: "1,70 €" },
-      { name: "Té jazmín", description: "Jasmine tea", price: "1,90 €" },
-    ],
+    name: "Serrano y queso",
+    description: "Serrano ham and cheese",
+    price: "5,50 €",
+    section: "Pa amb oli",
   },
+  { name: "Lomo", description: "Pork chops", price: "9,50 €", section: "Pa amb oli" },
   {
-    title: "Licores de copa",
-    items: [
-      { name: "Barceló", price: "4,10 €" },
-      { name: "Bacardi", price: "3,90 €" },
-      { name: "Bombay", price: "4,10 €" },
-      { name: "Beefeater", price: "4,10 €" },
-      { name: "Seagram", price: "4,10 €" },
-      { name: "Puerto de Indias", price: "3,90 €" },
-      { name: "Johnnie Walker", price: "4,10 €" },
-      { name: "J&B", price: "4,20 €" },
-      { name: "Ballantine's", price: "4,20 €" },
-      { name: "Jägermeister", price: "5,00 €" },
-      { name: "Jack Daniel's", price: "4,50 €" },
-      { name: "Terry", price: "3,90 €" },
-      { name: "Anís del Mono", price: "3,90 €" },
-      { name: "Vodka Absolut", price: "4,10 €" },
-      { name: "Eristoff", price: "3,90 €" },
-      { name: "Baileys", price: "3,90 €" },
-      { name: "Amazona", price: "3,90 €" },
-      { name: "Martini", price: "4,10 €" },
-    ],
+    name: "Lomo con queso",
+    description: "Pork chops with cheese",
+    price: "12,50 €",
+    section: "Pa amb oli",
   },
-  {
-    title: "Vinos tintos",
-    items: [
-      { name: "Copa de vino", price: "2,90 €" },
-      { name: "De la casa", price: "11,80 €" },
-      { name: "Faustino VII", price: "15,95 €" },
-      { name: "Añares", price: "15,95 €" },
-      { name: "Marqués de Cáceres", price: "16,95 €" },
-      { name: "Cune", price: "16,95 €" },
-      { name: "El Coto", price: "15,95 €" },
-    ],
-  },
-  {
-    title: "Vinos blancos",
-    items: [
-      { name: "Copa de vino", price: "2,90 €" },
-      { name: "De la casa", price: "11,80 €" },
-      { name: "Viña Sol", price: "15,95 €" },
-      { name: "Pescador", price: "15,95 €" },
-      { name: "Monopole", price: "15,95 €" },
-      { name: "El Coto", price: "15,95 €" },
-      { name: "Diamante", price: "15,95 €" },
-    ],
-  },
-  {
-    title: "Vinos rosados",
-    items: [
-      { name: "Copa de vino", price: "2,90 €" },
-      { name: "De la casa", price: "11,80 €" },
-      { name: "Mateus Rosé", price: "14,95 €" },
-      { name: "Lancers", price: "14,95 €" },
-      { name: "Lambrusco", price: "15,95 €" },
-      { name: "Marqués de Cáceres", price: "15,95 €" },
-    ],
-  },
-  {
-    title: "Ron",
-    items: [
-      { name: "Barceló", price: "6,95 €" },
-      { name: "Bacardi", price: "6,95 €" },
-    ],
-  },
-  {
-    title: "Whisky",
-    items: [
-      { name: "Johnnie Walker", price: "7,50 €" },
-      { name: "J&B", price: "7,50 €" },
-      { name: "Ballantine's", price: "7,50 €" },
-      { name: "Jägermeister", price: "8,50 €" },
-      { name: "Jack Daniel's", price: "7,50 €" },
-      { name: "Chivas", price: "7,95 €" },
-    ],
-  },
-  {
-    title: "Coñac",
-    items: [
-      { name: "Terry", price: "6,95 €" },
-      { name: "Anís del Mono", price: "6,50 €" },
-    ],
-  },
-  {
-    title: "Vodka",
-    items: [
-      { name: "Absolut", price: "6,95 €" },
-      { name: "Eristoff", price: "6,95 €" },
-    ],
-  },
-  {
-    title: "Desayunos",
-    items: [
-      {
-        name: "Tostadas con tomate",
-        description: "Toast with tomato",
-        price: "1,30 €",
-      },
-      {
-        name: "Tostadas con mantequilla",
-        description: "Toast with butter",
-        price: "1,40 €",
-      },
-      {
-        name: "Tostadas con serrano",
-        description: "Toast with ham",
-        price: "1,60 €",
-      },
-      {
-        name: "Tostadas con queso curado",
-        description: "Toast with cured cheese",
-        price: "1,50 €",
-      },
-    ],
-  },
+];
+
+const tabs: TabConfig[] = [
+  { id: "bebidas", label: "Bebidas", items: bebidas },
+  { id: "comidas", label: "Comidas", items: comidas },
 ];
 
 export default function MenuPage() {
@@ -235,42 +176,14 @@ export default function MenuPage() {
           Menú Romantime
         </h1>
         <p className="max-w-2xl text-sm text-neutral-300">
-          Carta de bebidas, desayunos y vinos de Romantime. Los precios pueden
-          variar según temporada.
+          Explora la carta de Romantime dividida en bebidas y comidas. Usa las
+          pestañas para cambiar de sección y navega por los productos en bloques
+          cómodos.
         </p>
       </header>
 
-      <div className="space-y-10">
-        {sections.map((section) => (
-          <section key={section.title} className="space-y-4">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
-              {section.title}
-            </h2>
-            <div className="divide-y divide-neutral-900/80 border-y border-neutral-900/80">
-              {section.items.map((item) => (
-                <article
-                  key={item.name}
-                  className="flex flex-col gap-2 py-4 sm:flex-row sm:items-baseline sm:justify-between"
-                >
-                  <div>
-                    <h3 className="text-sm font-medium text-neutral-100">
-                      {item.name}
-                    </h3>
-                    {item.description && (
-                      <p className="text-xs text-neutral-400">
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
-                  <p className="text-sm font-medium text-neutral-100 sm:text-right">
-                    {item.price}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+      <TabsMenu tabs={tabs} />
     </div>
   );
 }
+
