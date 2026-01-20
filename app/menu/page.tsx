@@ -173,7 +173,7 @@ export default function MenuPage() {
           alt="Logo Bar Romantime"
           width={600}
           height={600}
-          className="opacity-40 blur-[1px]"
+          className="opacity-60 blur-[1px]"
         />
       </div>
 
