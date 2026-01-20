@@ -51,7 +51,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col gap-1 text-xs text-neutral-400">
-              <span>Jueves a domingo · 09:30 – 00:00</span>
+              <span>Lunes a domingo · 09:30 – 00:00</span>
               <span>Carrer de Blanquerna · Palma de Mallorca</span>
             </div>
           </div>
