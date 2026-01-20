@@ -21,8 +21,7 @@ export default function ContactoPage() {
           <div className="overflow-hidden rounded-3xl border border-neutral-800 bg-black/40">
             <iframe
               title="Mapa Romantime"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.4152474182506!2d2.643!3d39.582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1297925d3b9f0a1d%3A0xXXXXXXXXXXXXXXX!2sCarrer%20de%20Blanquerna%2C%20Palma!5e0!3m2!1ses!2ses!4v1700000000000"
-              width="100%"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3075.047842751012!2d2.6466607752599107!3d39.581072106077144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129793369c3c69a1%3A0x4d290ee6b8057063!2sROMANTIME!5e0!3m2!1ses!2ses!4v1768910044065!5m2!1ses!2ses"           width="100%"
               height="320"
               style={{ border: 0 }}
               loading="lazy"
@@ -47,7 +46,7 @@ export default function ContactoPage() {
               <br />
               Carrer de Blanquerna
               <br />
-              070xx · Palma de Mallorca
+              07003 · Palma de Mallorca
             </p>
           </section>
 

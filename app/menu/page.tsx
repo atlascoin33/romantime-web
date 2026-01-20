@@ -1,4 +1,5 @@
 // app/menu/page.tsx
+import Image from "next/image";
 import TabsMenu, {
   MenuItem,
   TabConfig,
@@ -69,9 +70,6 @@ const bebidas: MenuItem[] = [
   { name: "Frutas del bosque", description: "Forest fruit", price: "1,70 €", section: "Infusiones" },
   { name: "Tila", description: "Linden tea", price: "1,70 €", section: "Infusiones" },
   { name: "Té jazmín", description: "Jasmine tea", price: "1,90 €", section: "Infusiones" },
-
-  // --- Licores, vinos, etc. ---
-  // (Puedes seguir añadiendo aquí todos los que ya teníamos: licores de copa, vinos tintos, blancos, rosados, ron, whisky, coñac, vodka, desayunos, etc.)
 ];
 
 const comidas: MenuItem[] = [
@@ -167,22 +165,36 @@ const tabs: TabConfig[] = [
 
 export default function MenuPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 pt-10 pb-16">
-      <header className="mb-8 space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400">
-          Carta
-        </p>
-        <h1 className="text-3xl font-semibold text-white sm:text-4xl">
-          Menú Romantime
-        </h1>
-        <p className="max-w-2xl text-sm text-neutral-300">
-          Explora la carta de Romantime dividida en bebidas y comidas. Usa las
-          pestañas para cambiar de sección y navega por los productos en bloques
-          cómodos.
-        </p>
-      </header>
+    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+      {/* Fondo con el logo */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <Image
+          src="/logo-invertido.png"
+          alt="Logo Bar Romantime"
+          width={600}
+          height={600}
+          className="opacity-40 blur-[1px]"
+        />
+      </div>
 
-      <TabsMenu tabs={tabs} />
+      {/* Contenido del menú */}
+      <div className="relative z-10 mx-auto max-w-5xl px-4 pt-14 pb-24">
+        <header className="mb-8 space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400">
+            Carta
+          </p>
+          <h1 className="text-3xl font-semibold text-white sm:text-4xl">
+            Menú Romantime
+          </h1>
+          <p className="max-w-2xl text-sm text-neutral-300">
+            Explora la carta de Romantime dividida en bebidas y comidas. Usa las
+            pestañas para cambiar de sección y navega por los productos en bloques
+            cómodos.
+          </p>
+        </header>
+
+        <TabsMenu tabs={tabs} />
+      </div>
     </div>
   );
 }
