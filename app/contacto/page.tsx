@@ -55,11 +55,11 @@ export default function ContactoPage() {
             <h2 className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Horario
             </h2>
-            <p>
-              Jueves a domingo · 19:00 – 01:00
-              <br />
-              (Horario orientativo, se puede ajustar según temporada)
-            </p>
+<p>
+  Abierto todos los días · 09:30 – 00:00
+  <br />
+  (Consulta festivos y cambios puntuales en redes sociales)
+</p>
           </section>
 
           <section className="space-y-1">
@@ -67,9 +67,7 @@ export default function ContactoPage() {
               Contacto
             </h2>
             <p>
-              Teléfono: +34 xxx xxx xxx
-              <br />
-              WhatsApp: +34 xxx xxx xxx
+              Teléfono: 971 58 36 97
               <br />
               Email: hola@romantime.es
             </p>
