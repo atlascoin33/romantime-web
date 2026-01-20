@@ -1,8 +1,8 @@
 // app/page.tsx
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 pt-10 pb-16">
-      <section className="grid gap-10 md:grid-cols-[1.4fr,1fr] md:items-center">
+<div className="mx-auto max-w-5xl px-4 pt-14 pb-24">
+      <section className="grid gap-12 md:grid-cols-[1.4fr,1fr] md:items-center">
         {/* Texto principal */}
         <div className="space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400">
@@ -33,7 +33,7 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-col gap-1 text-xs text-neutral-400">
-            <span>Jueves a domingo · 19:00 – 01:00</span>
+            <span>Jueves a domingo · 09:30 – 00:00</span>
             <span>Carrer de Blanquerna · Palma de Mallorca</span>
           </div>
         </div>
@@ -65,10 +65,37 @@ export default function HomePage() {
                   Luces bajas, música suave y mesas íntimas.
                 </p>
               </div>
-            </div>
+                      </div>
           </div>
         </div>
       </section>
+
+      <section className="mt-10 rounded-2xl border border-neutral-900 bg-black/60 px-4 py-3 text-xs text-neutral-300 flex flex-wrap gap-3 justify-between">
+        <span>📍 Carrer de Blanquerna, Palma</span>
+        <span>⏰ Abierto todos los días · 09:30 – 00:00</span>
+<span>{"☎️ +971 58 36 97"}</span>     
+<section className="mt-10 grid gap-8 md:grid-cols-2">
+  <div className="space-y-3">
+    <h2 className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
+      Sobre Romantime
+    </h2>
+    <p className="text-sm text-neutral-300">
+      Romantime es un bar de ambiente íntimo en el corazón de Blanquerna,
+      pensado para parejas, grupos pequeños y noches tranquilas entre
+      cócteles, tapas y buena conversación.
+    </p>
+  </div>
+  <div className="space-y-3 text-sm text-neutral-300">
+    <p>
+      Cuidamos la música, la luz y los detalles para que puedas
+      desconectar del día a día. Nuestra carta mezcla clásicos y
+      propuestas propias, siempre con producto de calidad.
+    </p>
+  </div>
+</section>
+
+ </section>
     </div>
   );
 }
+
