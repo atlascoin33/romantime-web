@@ -82,42 +82,34 @@ export function Header() {
       {/* Menú móvil desplegable */}
       {open && (
         <div className="border-t border-neutral-900/60 bg-black/95 md:hidden">
-          <div className="mx-auto flex max-w-5xl flex-col px-4 py-4 gap-3 text-sm">
+          <div className="mx-auto flex max-w-5xl flex-col px-4 py-4 gap-1 text-base">
             <Link
               href="/"
               onClick={closeMenu}
-              className="py-2 border-b border-neutral-900/60 hover:text-white transition-colors"
+              className="py-3 border-b border-neutral-900/60 hover:text-white transition-colors"
             >
               Inicio
             </Link>
             <Link
               href="/menu"
               onClick={closeMenu}
-              className="py-2 border-b border-neutral-900/60 hover:text-white transition-colors"
+              className="py-3 border-b border-neutral-900/60 hover:text-white transition-colors"
             >
               Menú
             </Link>
             <Link
               href="/reservas"
               onClick={closeMenu}
-              className="py-2 border-b border-neutral-900/60 hover:text-white transition-colors"
+              className="py-3 border-b border-neutral-900/60 hover:text-white transition-colors"
             >
               Reservas
             </Link>
             <Link
               href="/contacto"
               onClick={closeMenu}
-              className="py-2 hover:text-white transition-colors"
+              className="py-3 hover:text-white transition-colors"
             >
               Contacto
-            </Link>
-
-            <Link
-              href="/reservas"
-              onClick={closeMenu}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black hover:bg-neutral-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-colors"
-            >
-              Reservar mesa
             </Link>
           </div>
         </div>
