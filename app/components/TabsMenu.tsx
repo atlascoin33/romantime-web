@@ -117,12 +117,12 @@ export default function TabsMenu({ tabs }: { tabs: TabConfig[] }) {
 
       {/* Paginación */}
       {activeTab && activeTab.items.length > ITEMS_PER_PAGE && (
-        <div className="flex items-center justify-between gap-4 text-xs text-neutral-400">
+        <div className="flex items-center justify-between gap-4 text-sm text-neutral-400">
           <button
             type="button"
             onClick={handlePrev}
             disabled={page === 1}
-            className={`rounded-full border px-3 py-1 transition-colors ${
+            className={`rounded-full border px-6 py-2 transition-colors ${
               page === 1
                 ? "border-neutral-800 text-neutral-600"
                 : "border-neutral-700 hover:border-neutral-400 hover:text-neutral-100"
@@ -137,7 +137,7 @@ export default function TabsMenu({ tabs }: { tabs: TabConfig[] }) {
             type="button"
             onClick={handleNext}
             disabled={page === totalPages}
-            className={`rounded-full border px-3 py-1 transition-colors ${
+            className={`rounded-full border px-6 py-2 transition-colors ${
               page === totalPages
                 ? "border-neutral-800 text-neutral-600"
                 : "border-neutral-700 hover:border-neutral-400 hover:text-neutral-100"
